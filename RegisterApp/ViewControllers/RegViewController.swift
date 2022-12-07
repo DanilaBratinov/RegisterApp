@@ -58,8 +58,12 @@ class RegViewController: UIViewController {
     
     @IBAction func registerButton(_ sender: UIButton) {
         if nameTF.isHidden == true {
-            nameTF.isHidden = false
-            ageTF.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.nameTF.isHidden = false
+                self.ageTF.isHidden = false
+                self.loginButtonOutlet.isHidden = true
+                self.titleLabel.text = "Регистрация"
+            }
         } else {
             let password = passwordTF.text!
             let name = nameTF.text!

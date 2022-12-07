@@ -81,15 +81,15 @@ class UsersTableViewController: UITableViewController {
         }
         content.text = person.names[indexPath.row]
         content.secondaryText = "Город: \(person.citys[indexPath.row])"
-//        if imageArray.count == person.names.count {
-//            content.image = imageArray[indexPath.row]
-//        } else {
-//            content.image = UIImage(named: "burning-rose-4k-1k.jpg")
-//            refreshImages()
-//            tableView.reloadData()
-//        }
-//        
-//        content.imageProperties.cornerRadius = tableView.rowHeight / 2
+        //        if imageArray.count == person.names.count {
+        //            content.image = imageArray[indexPath.row]
+        //        } else {
+        //            content.image = UIImage(named: "burning-rose-4k-1k.jpg")
+        //            refreshImages()
+        //            tableView.reloadData()
+        //        }
+        //
+        //        content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.contentConfiguration = content
         
         return cell
@@ -108,7 +108,7 @@ class UsersTableViewController: UITableViewController {
         detailsVC.emailStr = person.email[index]
         detailsVC.adressStr = person.street[index]
     }
-
+    
     @IBAction func refreshButton(_ sender: UIBarButtonItem) {
         if imageArray.isEmpty {
             refreshImages()
@@ -116,7 +116,7 @@ class UsersTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -135,15 +135,12 @@ extension UsersTableViewController: UISearchBarDelegate {
             let text = searchText.lowercased()
             let isArrayContain = item.lowercased().ranges(of: text)
             
-            if isArrayContain != nil {
-                print("searchComplite")
-                filteredNames.append(item)
-            }
+            filteredNames.append(item)
         }
+        
         if searchBar.text == "" {
             isSearching = false
             view.endEditing(true)
-            
             tableView.reloadData()
         } else {
             isSearching = true
